@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-zerocool989-dailyfinance-v3mui25vri.us2.codeanyapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-zerocool989-dailyfinance-v3mui25vri.us2.codeanyapp.com',
+                 'localhost', '127.0.0.1:8000', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,6 +79,13 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,11 +112,11 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinary'
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join (BASE_DIR, 'staticfiles')
 
-MEDIA_URL= '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
