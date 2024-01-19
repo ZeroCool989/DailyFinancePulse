@@ -77,5 +77,8 @@ class Comment(models.Model):
     def __str__(self):
         # String representation showing part of comment and commenter's name
         return f"Comment '{self.body[:20]}...' by {self.name}"
+    
+    
+    
 
     
